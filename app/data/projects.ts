@@ -25,21 +25,19 @@ export const allProjects: Project[] = [
         description: "Smart HRM Proven is a Flutter-based HRIS mobile application designed to manage 5,000+ employees, featuring scalable architecture and multi-level approval workflows to support complex enterprise HR processes.",
         image: "/cover.jpg",
         slug: "mobile-app",
-        link: "#",
+        link: "https://play.google.com/store/apps/details?id=com.pfi.smart_hrm&pcampaignid=web_share",
         studyCase: "#",
         longDescription: "Smart HRM Proven is a comprehensive HRIS (Human Resource Information System) mobile application built with Flutter. The app is designed to handle the full spectrum of HR operations for enterprises with 5,000+ employees. It features a robust multi-level approval workflow system, real-time attendance tracking, leave management, and payroll integration. The architecture was designed with scalability in mind, ensuring smooth performance even under heavy concurrent usage.",
-        techStack: ["Flutter", "Dart", "REST API", "Firebase", "Provider", "SQLite"],
+        techStack: ["Flutter", "Dart", "REST API", "Firebase", "GetX", "Shared Preferences", "Google Maps", "Firebase FCM"],
         features: [
             "Multi-level approval workflows",
             "Real-time attendance tracking with GPS",
             "Leave & overtime management",
-            "Payroll integration",
             "Employee self-service portal",
             "Push notification system",
-            "Offline-first architecture"
         ],
         role: "Mobile Developer",
-        duration: "8 months",
+        duration: "2024-Present",
         platform: "iOS & Android",
         screenshots: ["/cover.jpg"]
     },
@@ -50,10 +48,10 @@ export const allProjects: Project[] = [
         description: "Milou Farm House is a mobile loyalty and food ordering application that enables customers to place orders, earn loyalty points, and redeem rewards within a single, seamless user experience.",
         image: "/milou_farm.jpg",
         slug: "mobile-app",
-        link: "#",
+        link: "https://play.google.com/store/search?q=milou+farm+house&c=apps&hl=id",
         studyCase: "#",
         longDescription: "Milou Farm House is a feature-rich mobile application that combines food ordering with a comprehensive loyalty rewards system. Customers can browse the menu, customize orders, earn points with every purchase, and redeem exclusive rewards. The app provides real-time order tracking, personalized recommendations based on order history, and seamless payment integration.",
-        techStack: ["Flutter", "Dart", "REST API", "Firebase Cloud Messaging"],
+        techStack: ["Flutter", "Dart", "REST API", "Firebase Cloud Messaging", "Provider", "Shared Preferences", "Google Maps", "Firebase FCM"],
         features: [
             "Digital menu with real-time availability",
             "Loyalty points system",
@@ -63,7 +61,7 @@ export const allProjects: Project[] = [
             "Order history & reorder functionality"
         ],
         role: "Mobile Developer",
-        duration: "4 months",
+        duration: "2023-2024",
         platform: "iOS & Android",
         screenshots: ["/milou_farm.jpg"]
     },
@@ -77,17 +75,14 @@ export const allProjects: Project[] = [
         link: "#",
         studyCase: "#",
         longDescription: "MIDES (Military Digital Education System) is a specialized mobile learning platform built for military academy-style education institutions. The application delivers structured learning modules, video-based training materials, and interactive assessments. It supports offline learning capabilities, progress tracking, and hierarchical content management aligned with military training frameworks.",
-        techStack: ["Flutter", "Dart", "REST API", "Video Streaming", "SQLite"],
+        techStack: ["Flutter", "Dart", "REST API", "Video Streaming", "GetX", "Shared Preferences"],
         features: [
             "Structured learning modules",
-            "Video-based training content",
             "Interactive assessments & quizzes",
-            "Offline learning support",
-            "Progress tracking & analytics",
             "Hierarchical content management"
         ],
         role: "Mobile Developer",
-        duration: "5 months",
+        duration: "6 months",
         platform: "iOS & Android",
         screenshots: ["/mides.jpg"]
     },
@@ -98,10 +93,10 @@ export const allProjects: Project[] = [
         description: "LASHUP is a beauty-focused loyalty and royalty mobile application designed to manage rewards and incentives within a digital ecosystem.",
         image: "/lashup.jpg",
         slug: "mobile-app",
-        link: "#",
+        link: "https://play.google.com/store/apps/details?id=com.lashup.quetra&hl=id",
         studyCase: "#",
         longDescription: "LASHUP is a beautifully designed mobile application focused on the beauty industry's loyalty and rewards ecosystem. The app enables beauty brands and salons to create, manage, and distribute loyalty rewards and incentives to their customers. Features include tiered membership levels, exclusive beauty deals, appointment booking integration, and social sharing capabilities.",
-        techStack: ["Flutter", "Dart", "Figma", "REST API"],
+        techStack: ["Flutter", "Dart", "Provider", "REST API", "SharedPreferences", "Google Maps", "Firebase FCM"],
         features: [
             "Tiered membership system",
             "Reward points & redemption",
@@ -111,7 +106,7 @@ export const allProjects: Project[] = [
             "Personalized beauty recommendations"
         ],
         role: "UI/UX Designer & Mobile Developer",
-        duration: "3 months",
+        duration: "2023-2024",
         platform: "iOS & Android",
         screenshots: ["/lashup.jpg"]
     },
@@ -135,7 +130,7 @@ export const allProjects: Project[] = [
             "Document management"
         ],
         role: "Mobile Developer",
-        duration: "6 months",
+        duration: "3 months",
         platform: "iOS & Android",
         screenshots: ["/squadra.jpg"]
     },
@@ -146,20 +141,15 @@ export const allProjects: Project[] = [
         description: "Oprtech is a mobile reimbursement application designed to manage employee expense claims through a structured and scalable digital workflow.",
         image: "/oprtech.jpg",
         slug: "mobile-app",
-        link: "#",
+        link: "https://play.google.com/store/apps/details?id=com.ahlibangunsistem.oprtech_app&pcampaignid=web_share",
         studyCase: "#",
         longDescription: "Oprtech is a specialized mobile application focused on streamlining the employee reimbursement and expense claim process. The app provides a structured digital workflow for submitting, reviewing, and approving expense claims. Features include receipt scanning via camera, multi-level approval chains, expense categorization, and integration with accounting systems for seamless financial reporting.",
-        techStack: ["Flutter", "Dart", "REST API", "Camera API", "Firebase"],
+        techStack: ["Flutter", "Dart", "REST API", "Camera", "Firebase", "SharedPreferences", "Provider"],
         features: [
             "Receipt scanning & OCR",
-            "Multi-level approval workflow",
-            "Expense categorization",
-            "Budget tracking & limits",
-            "Accounting system integration",
-            "Expense report generation"
         ],
         role: "Mobile Developer",
-        duration: "4 months",
+        duration: "6 months",
         platform: "iOS & Android",
         screenshots: ["/oprtech.jpg"]
     },
@@ -183,7 +173,7 @@ export const allProjects: Project[] = [
             "Push notification promotions"
         ],
         role: "Mobile Developer",
-        duration: "3 months",
+        duration: "2023-2024",
         platform: "iOS & Android",
         screenshots: ["/barber.jpg"]
     },
@@ -207,7 +197,7 @@ export const allProjects: Project[] = [
             "Employee self-service"
         ],
         role: "Mobile Developer",
-        duration: "4 months",
+        duration: "2023-2024",
         platform: "iOS & Android",
         screenshots: ["/barber.jpg"]
     },
@@ -231,7 +221,7 @@ export const allProjects: Project[] = [
             "Venue check-in system"
         ],
         role: "Mobile Developer",
-        duration: "3 months",
+        duration: "5 months",
         platform: "iOS & Android",
         screenshots: ["/ihp.jpg"]
     },
