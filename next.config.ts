@@ -1,7 +1,9 @@
-import type { NextConfig } from "next";
-
-const nextConfig: NextConfig = {
-  /* config options here */
+// next.config.ts
+const nextConfig = {
+  output: 'export',
+  images: { unoptimized: true },
+  typescript: {
+    // Setel ini ke true HANYA jika kamu mau ignore error TS saat build
+    ignoreBuildErrors: false, 
+  },
 };
-
-export default nextConfig;
