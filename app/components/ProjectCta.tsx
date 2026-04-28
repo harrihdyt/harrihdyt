@@ -1,63 +1,51 @@
 'use client';
 
 import React from 'react';
-import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { Mail } from 'lucide-react';
+import Image from 'next/image';
 
 const ProjectCta = () => {
     return (
-        <section className="py-24 px-6 lg:px-24 bg-[#121212]">
-            <div className="container mx-auto relative">
-                <div className="relative bg-[#1a1a1a] rounded-3xl p-12 lg:p-24 overflow-hidden flex flex-col lg:flex-row items-center justify-between gap-12">
+        <section className="py-16 px-6 lg:px-8 bg-gray-50">
+            <div className="max-w-6xl mx-auto">
+                <div className="bg-white border border-gray-200 rounded-2xl p-10 lg:p-16 flex flex-col lg:flex-row items-center justify-between gap-10">
 
-                    {/* Background Pattern */}
-                    <div className="absolute inset-0 opacity-10">
-                        <svg width="100%" height="100%">
-                            <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
-                                <path d="M 40 0 L 0 0 0 40" fill="none" stroke="white" strokeWidth="1" />
-                            </pattern>
-                            <rect width="100%" height="100%" fill="url(#grid)" />
-                        </svg>
-                    </div>
-
-                    {/* Left Content: Text & Button */}
-                    <div className="relative z-10 max-w-2xl space-y-8 text-center lg:text-left">
-                        <h2 className="text-4xl lg:text-5xl font-bold text-white leading-tight">
+                    {/* Left Content */}
+                    <div className="max-w-xl space-y-4 text-center lg:text-left">
+                        <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 leading-tight">
                             Interested working with me?
                         </h2>
-                        <div className="flex justify-center lg:justify-start">
-                            <button className="px-8 py-4 bg-[#22c55e] text-white font-bold rounded hover:bg-[#16a34a] transition-colors flex items-center gap-2 shadow-lg shadow-green-900/20 text-lg">
-                                <Mail className="w-5 h-5" />
+                        <p className="text-gray-500">
+                            I&apos;m always open to discussing new projects, creative ideas, or opportunities to be part of your vision.
+                        </p>
+                        <div className="flex justify-center lg:justify-start pt-2">
+                            <a
+                                href="mailto:harrihidayat.dev@gmail.com"
+                                className="px-6 py-3 bg-[#22c55e] text-white font-semibold rounded-lg hover:bg-[#16a34a] transition-colors flex items-center gap-2 text-sm shadow-sm"
+                            >
+                                <Mail className="w-4 h-4" />
                                 Email Me
-                            </button>
-                            {/* <button className="px-8 py-4 ml-4 border border-gray-600 text-white font-bold rounded hover:bg-white/5 transition-colors text-lg">
-                                See More Projects
-                            </button> */}
+                            </a>
                         </div>
                     </div>
 
-                    {/* Right Content: Image Cutout */}
-                    <div className="relative z-10 w-full max-w-sm">
-                        <div className="relative aspect-square">
-                            {/* User Photo */}
-                            <div className="absolute inset-0">
-                                <Image
-                                    src="/profile.png"
-                                    alt="Harri Hidayat"
-                                    fill
-                                    className="object-cover grayscale"
-                                    priority
-                                />
-                            </div>
-
-                            {/* Floating Element */}
-                            <motion.div
-                                animate={{ y: [0, -10, 0] }}
-                                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                                className="absolute -top-4 -right-4 w-16 h-16 border-4 border-[#22c55e] rounded-full"
+                    {/* Right Image */}
+                    <div className="relative w-48 h-48 lg:w-56 lg:h-56 shrink-0">
+                        <div className="absolute inset-0 rounded-full overflow-hidden bg-gray-100">
+                            <Image
+                                src="/profile.png"
+                                alt="Harri Hidayat"
+                                fill
+                                className="object-cover grayscale"
+                                priority
                             />
                         </div>
+                        <motion.div
+                            animate={{ y: [0, -6, 0] }}
+                            transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                            className="absolute -top-2 -right-2 w-6 h-6 bg-[#22c55e] rounded-full"
+                        />
                     </div>
 
                 </div>

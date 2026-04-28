@@ -1,107 +1,55 @@
 'use client';
 
-import React, { useState, useRef } from 'react';
-import { motion, useMotionValue, useSpring, useTransform, MotionValue } from 'framer-motion';
-
-import ProjectCta from '../components/ProjectCta';
+import React, { useState } from 'react';
+import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
-import ContactSection from '../components/ContactSection';
-import { ArrowUpRight, Monitor, Smartphone } from 'lucide-react';
+import { ArrowUpRight } from 'lucide-react';
 import { allProjects } from '../data/projects';
-
-// Navbar import fix: assuming Navbar is default export from components/Navbar
-
+import ProjectCta from '../components/ProjectCta';
+import ContactSection from '../components/ContactSection';
 
 const ProjectCard = ({ project }: { project: any }) => {
-    const ref = useRef<HTMLDivElement>(null);
-    const [isActive, setIsActive] = useState(false);
-
-    // Parallax logic
-    const x = useMotionValue(0);
-    const y = useMotionValue(0);
-    const mouseX = useSpring(x, { stiffness: 50, damping: 20 });
-    const mouseY = useSpring(y, { stiffness: 50, damping: 20 });
-
-    function handleMouseMove(e: React.MouseEvent<HTMLDivElement>) {
-        if (!ref.current) return;
-        const rect = ref.current.getBoundingClientRect();
-        const xPct = (e.clientX - rect.left) / rect.width - 0.5;
-        const yPct = (e.clientY - rect.top) / rect.height - 0.5;
-        x.set(xPct);
-        y.set(yPct);
-    }
-
-    function handleMouseLeave() {
-        x.set(0);
-        y.set(0);
-    }
-
     return (
-        <div className="space-y-4">
-            {/* Card Image with Parallax */}
-            <Link href={`/projects/${project.id}`}>
-                <motion.div
-                    ref={ref}
-                    onMouseMove={handleMouseMove}
-                    onMouseLeave={handleMouseLeave}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    className="relative w-full aspect-[16/10] rounded-lg overflow-hidden cursor-pointer perspective-1000 group"
-                >
-                    <motion.div
-                        style={{
-                            rotateX: useTransform(mouseY, [-0.5, 0.5], [5, -5]),
-                            rotateY: useTransform(mouseX, [-0.5, 0.5], [-5, 5]),
-                            scale: useTransform(isActive ? new MotionValue(1.02) : new MotionValue(1), [1, 1], [1, 1.05])
-                        }}
-                        className="w-full h-full relative transition-transform duration-500 bg-[#1a1a1a]"
-                    >
+        <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+        >
+            <Link href={`/projects/${project.id}`} className="group block">
+                <div className="bg-white border border-gray-200 rounded-2xl overflow-hidden hover:shadow-lg transition-all duration-300 hover:border-gray-300">
+                    {/* Image */}
+                    <div className="relative aspect-[4/3] overflow-hidden bg-gray-100">
                         <Image
                             src={project.image}
                             alt={project.title}
                             fill
-                            className="object-cover"
+                            className="object-cover group-hover:scale-105 transition-transform duration-500"
                         />
+                    </div>
 
-                        {/* Overlay Content */}
-                        <div className="absolute inset-0 bg-black/10 group-hover:bg-black/30 transition-colors z-10" />
-
-                        {/* Mock UI Elements inside card - Removed as we have real images now, or purely stylistic overlay */}
-                        <div className="absolute top-8 left-8 right-8 bottom-8 border border-white/20 p-6 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-20 flex items-center justify-center">
-                            <span className="text-white font-bold tracking-widest uppercase text-sm bg-black/50 px-4 py-2 rounded-full backdrop-blur-md">View Project</span>
+                    {/* Content */}
+                    <div className="p-6">
+                        <h3 className="text-lg font-bold text-gray-900 mb-2 group-hover:text-[#22c55e] transition-colors">
+                            {project.title}
+                        </h3>
+                        <p className="text-gray-500 text-sm leading-relaxed mb-4 line-clamp-2">
+                            {project.description}
+                        </p>
+                        <div className="flex flex-wrap gap-2">
+                            {project.techStack.slice(0, 3).map((tag: string) => (
+                                <span
+                                    key={tag}
+                                    className="px-3 py-1 border border-gray-200 rounded-full text-xs font-medium text-gray-600"
+                                >
+                                    {tag}
+                                </span>
+                            ))}
                         </div>
-                    </motion.div>
-                </motion.div>
-            </Link>
-
-            {/* Info */}
-            <div>
-                <Link href={`/projects/${project.id}`}>
-                    <h3
-                        className={`text-xl font-bold mb-2 cursor-pointer transition-colors ${isActive ? 'text-[#22c55e]' : 'text-white hover:text-gray-300'}`}
-                    >
-                        {project.title}
-                    </h3>
-                </Link>
-
-                <p className="text-gray-400 text-sm mb-4 line-clamp-3">
-                    {project.description}
-                </p>
-
-                <div className="flex gap-6 text-sm font-medium text-gray-400 mt-3">
-                    <a href={project.studyCase} className="flex items-center gap-2 hover:text-white transition-colors">
-                        <Monitor className="w-4 h-4" />
-                        <span>View Study Case</span>
-                    </a>
-                    <Link href={`/projects/${project.id}`} className="flex items-center gap-2 hover:text-white transition-colors">
-                        <ArrowUpRight className="w-4 h-4" />
-                        <span>View Details</span>
-                    </Link>
+                    </div>
                 </div>
-            </div>
-        </div>
+            </Link>
+        </motion.div>
     );
 };
 
@@ -112,53 +60,49 @@ export default function ProjectsPage() {
         ? allProjects
         : allProjects.filter(p => p.slug === filter);
 
+    const tabs = [
+        { label: 'All', value: 'all' },
+        { label: 'Web', value: 'web-design' },
+        { label: 'Mobile App', value: 'mobile-app' },
+    ];
+
     return (
-        <main className="min-h-screen bg-[#121212] pt-32">
+        <main className="min-h-screen bg-white pt-24">
             {/* Header */}
-            <section className="px-6 lg:px-24 mb-16 relative">
-                <motion.h1
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    className="text-5xl lg:text-7xl font-bold text-white mb-12"
+            <section className="max-w-6xl mx-auto px-6 lg:px-8 mb-12">
+                <motion.div
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
                 >
-                    Projects
-                </motion.h1>
+                    <h1 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-3">
+                        Selected Work
+                    </h1>
+                    <p className="text-gray-500 max-w-lg">
+                        A curated showcase of mobile applications engineered for high performance,
+                        robust architecture, and seamless user experiences across iOS and Android platforms.
+                    </p>
+                </motion.div>
 
-                {/* Floating Geometric Elements */}
-                <div className="absolute top-0 right-20 pointer-events-none">
-                    <motion.div
-                        animate={{ rotate: 360 }}
-                        transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-                        className="w-32 h-32 border border-green-500/20 rotate-12"
-                    />
-                </div>
-
-                {/* Tabs */}
-                <div className="flex gap-8 border-b border-gray-800 pb-4">
-                    <button
-                        onClick={() => setFilter('all')}
-                        className={`text-lg font-medium transition-colors ${filter === 'all' ? 'text-white border-b-2 border-[#22c55e] pb-4 -mb-4.5' : 'text-gray-500 hover:text-gray-300'}`}
-                    >
-                        All
-                    </button>
-                    <button
-                        onClick={() => setFilter('web-design')}
-                        className={`text-lg font-medium transition-colors ${filter === 'web-design' ? 'text-white border-b-2 border-[#22c55e] pb-4 -mb-4.5' : 'text-gray-500 hover:text-gray-300'}`}
-                    >
-                        Web
-                    </button>
-                    <button
-                        onClick={() => setFilter('mobile-app')}
-                        className={`text-lg font-medium transition-colors ${filter === 'mobile-app' ? 'text-white border-b-2 border-[#22c55e] pb-4 -mb-4.5' : 'text-gray-500 hover:text-gray-300'}`}
-                    >
-                        Mobile App
-                    </button>
+                {/* Filter Tabs */}
+                <div className="flex gap-1 mt-8 border-b border-gray-200 pb-0">
+                    {tabs.map(tab => (
+                        <button
+                            key={tab.value}
+                            onClick={() => setFilter(tab.value)}
+                            className={`px-4 py-3 text-sm font-medium transition-colors border-b-2 -mb-px ${filter === tab.value
+                                ? 'text-gray-900 border-[#22c55e]'
+                                : 'text-gray-400 border-transparent hover:text-gray-600'
+                                }`}
+                        >
+                            {tab.label}
+                        </button>
+                    ))}
                 </div>
             </section>
 
             {/* Grid */}
-            <section className="px-6 lg:px-24 pb-24">
-                <div className="grid lg:grid-cols-2 gap-x-12 gap-y-16">
+            <section className="max-w-6xl mx-auto px-6 lg:px-8 pb-20">
+                <div className="grid md:grid-cols-2 gap-8">
                     {filteredProjects.map(project => (
                         <ProjectCard key={project.id} project={project} />
                     ))}

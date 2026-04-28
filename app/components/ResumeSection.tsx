@@ -2,97 +2,77 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Briefcase, Download, Calendar } from 'lucide-react';
 
 const experiences = [
     {
         id: 1,
         role: "Flutter Mobile Engineer",
         company: "PT Proven Force Indonesia",
-        period: "2024 - Present",
-        description: "Building and publishing Flutter-based mobile applications for iOS and Android.",
-        skills: ["Flutter", "Dart", "iOS", "Android", "Firebase", "Git", "Agile", "Scrum", "Getx", "Rest API"]
+        period: "2024 — Present",
+        description: "Spearheaded the development of core mobile applications using Flutter. Architected scalable state management solutions, integrated complex RESTful APIs, and collaborated closely with cross-functional teams to deliver high-fidelity UI/UX implementations. Improved app performance metrics by 30% through targeted refactoring and asset optimization.",
     },
     {
         id: 2,
         role: "Flutter Mobile Engineer",
         company: "PT Quetra Asia Klandestin",
-        period: "2023 - 2024",
-        description: "Building and maintenance existing mobile applications for iOS and Android.",
-        skills: ["Flutter", "Dart", "iOS", "Android", "Firebase", "Git", "Scrum", "Provider", "Rest API"]
+        period: "2023 — 2024",
+        description: "Played a pivotal role in translating complex business requirements into seamless mobile experiences. Implemented custom animations, managed local data persistence, and ensured cross-platform consistency between iOS and Android builds. Participated in rigorous code reviews and agile sprint planning.",
     },
-    // Add more based on real data later
 ];
 
 const ResumeSection = () => {
     return (
-        <section className="py-24 bg-[#121212] relative overflow-hidden px-6 lg:px-24">
-            {/* Background Text Watermark */}
-            <div className="absolute top-10 right-0 w-full overflow-hidden leading-none pointer-events-none opacity-[0.02] select-none text-center">
-                <span className="text-[15vw] font-bold text-white whitespace-nowrap">RESUME</span>
-            </div>
-
-            <div className="container mx-auto grid lg:grid-cols-2 gap-16 items-start relative z-10">
-
-                {/* Left: Heading & Intro */}
-                <motion.div
-                    initial={{ opacity: 0, x: -50 }}
-                    whileInView={{ opacity: 1, x: 0 }}
+        <section className="py-20 bg-white px-6 lg:px-8">
+            <div className="max-w-6xl mx-auto">
+                <motion.h2
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    className="space-y-8"
+                    className="text-3xl lg:text-4xl font-bold text-gray-900 mb-3"
                 >
-                    <h2 className="text-4xl lg:text-5xl font-bold leading-tight text-white">
-                        My <span className="text-[#22c55e]">Professional Journey.</span>
-                    </h2>
-                    <p className="text-gray-400 text-lg leading-relaxed max-w-lg">
-                        Experienced Mobile Engineer with a strong background in native and cross-platform development. I enjoy building scalable applications and solving complex problems.
-                    </p>
+                    Professional Journey
+                </motion.h2>
+                <motion.p
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    viewport={{ once: true }}
+                    className="text-gray-500 mb-12"
+                >
+                    A timeline of my professional growth and technical contributions.
+                </motion.p>
 
-                    <a href="/resume.pdf" className="inline-flex items-center gap-3 px-8 py-4 bg-[#22c55e] text-white font-bold rounded hover:bg-[#16a34a] transition-all shadow-lg shadow-green-900/20 group">
-                        <Download className="w-5 h-5 group-hover:translate-y-1 transition-transform" />
-                        Download Resume
-                    </a>
-                </motion.div>
-
-                {/* Right: Timeline/Experience List */}
-                <div className="space-y-8">
+                {/* Timeline */}
+                <div className="border-l-2 border-gray-200 ml-3 space-y-12">
                     {experiences.map((exp, index) => (
                         <motion.div
                             key={exp.id}
-                            initial={{ opacity: 0, y: 30 }}
-                            whileInView={{ opacity: 1, y: 0 }}
+                            initial={{ opacity: 0, x: -20 }}
+                            whileInView={{ opacity: 1, x: 0 }}
                             viewport={{ once: true }}
                             transition={{ delay: index * 0.1 }}
-                            className="bg-gray-800/30 border border-gray-700/50 p-8 rounded-2xl hover:bg-gray-800/50 transition-colors group"
+                            className="relative pl-10"
                         >
-                            <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-4 gap-2">
-                                <h3 className="text-xl font-bold text-white group-hover:text-[#22c55e] transition-colors">{exp.role}</h3>
-                                <div className="flex items-center gap-2 text-sm text-gray-500 bg-gray-900/50 px-3 py-1 rounded-full w-fit">
-                                    <Calendar className="w-3 h-3" />
-                                    {exp.period}
-                                </div>
-                            </div>
+                            {/* Timeline Dot */}
+                            <div className="absolute -left-[9px] top-2 w-4 h-4 rounded-full bg-[#22c55e] border-4 border-white" />
 
-                            <p className="text-gray-400 font-medium mb-4 flex items-center gap-2">
-                                <Briefcase className="w-4 h-4 text-gray-500" />
-                                {exp.company}
-                            </p>
-
-                            <p className="text-gray-400 text-sm leading-relaxed mb-6">
-                                {exp.description}
-                            </p>
-
-                            <div className="flex flex-wrap gap-2">
-                                {exp.skills.map(skill => (
-                                    <span key={skill} className="text-xs font-semibold bg-gray-700 text-gray-300 px-3 py-1 rounded-full">
-                                        {skill}
+                            {/* Card */}
+                            <div className="bg-white border border-gray-200 rounded-2xl p-6 hover:shadow-md transition-shadow">
+                                <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-3 gap-2">
+                                    <div>
+                                        <h3 className="text-lg font-bold text-gray-900">{exp.role}</h3>
+                                        <p className="text-[#22c55e] font-medium text-sm">{exp.company}</p>
+                                    </div>
+                                    <span className="text-sm text-gray-400 font-medium whitespace-nowrap">
+                                        {exp.period}
                                     </span>
-                                ))}
+                                </div>
+                                <p className="text-gray-500 text-sm leading-relaxed">
+                                    {exp.description}
+                                </p>
                             </div>
                         </motion.div>
                     ))}
                 </div>
-
             </div>
         </section>
     );

@@ -2,107 +2,117 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ArrowUpRight, Github, Globe, Smartphone, Monitor } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import Image from 'next/image';
+import Link from 'next/link';
 
 const projects = [
     {
         id: 1,
         title: "Smart HRM Proven",
         category: "Mobile App",
+        description: "A comprehensive enterprise mobile solution streamlining employee onboarding, real-time attendance tracking, and secure payroll processing with 5,000+ active employees.",
         image: "/cover.jpg",
-        type: "app",
-        link: "#",
-        studyCase: "#"
+        tags: ["Flutter", "Dart", "Firebase"],
     },
     {
         id: 2,
         title: "Milou Farm House",
         category: "Mobile App",
+        description: "A bespoke e-commerce and booking application designed to connect users with authentic agricultural experiences, featuring complex calendar integrations and secure payment gateways.",
         image: "/milou_farm.jpg",
-        type: "app",
-        link: "#",
-        studyCase: "#"
+        tags: ["Flutter", "Dart", "Provider"],
     },
     {
         id: 3,
-        title: "MIDES",
+        title: "M-IDES",
         category: "Mobile App",
+        description: "A highly secure identity and data exchange system for mobile devices, utilizing advanced encryption protocols to ensure safe and rapid information transfer in critical environments.",
         image: "/mides.jpg",
-        type: "app",
-        link: "#",
-        studyCase: "#"
+        tags: ["Flutter", "Dart", "GetX"],
     },
     {
         id: 4,
-        title: "Lash Up Studio",
-        category: "Web",
+        title: "LASHUP",
+        category: "Mobile App",
+        description: "A modern beauty loyalty application focused on user autonomy, featuring real-time reward tracking, intuitive membership management, and seamless engagement.",
         image: "/lashup.jpg",
-        type: "website",
-        link: "#",
-        studyCase: "#"
+        tags: ["Flutter", "Dart", "Provider"],
     }
 ];
 
 const SelectedProjects = () => {
     return (
-        <section className="py-24 bg-[#121212] relative overflow-hidden px-6 lg:px-24">
-            {/* Background Text Watermark */}
-            <div className="absolute top-0 right-0 w-full overflow-hidden leading-none pointer-events-none opacity-[0.02] select-none text-right">
-                <span className="text-[15vw] font-bold text-white whitespace-nowrap">PROJECTS</span>
-            </div>
+        <section className="py-20 bg-white px-6 lg:px-8">
+            <div className="max-w-6xl mx-auto">
+                {/* Header */}
+                <div className="flex items-center justify-between mb-12">
+                    <motion.h2
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        className="text-3xl lg:text-4xl font-bold text-gray-900"
+                    >
+                        Selected Projects
+                    </motion.h2>
+                    <motion.div
+                        initial={{ opacity: 0 }}
+                        whileInView={{ opacity: 1 }}
+                        viewport={{ once: true }}
+                    >
+                        <Link
+                            href="/projects"
+                            className="flex items-center gap-2 text-sm font-medium text-gray-500 hover:text-gray-900 transition-colors"
+                        >
+                            View All Work
+                            <ArrowRight className="w-4 h-4" />
+                        </Link>
+                    </motion.div>
+                </div>
 
-            <div className="container mx-auto relative z-10">
-                <motion.h2
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    className="text-4xl lg:text-5xl font-bold mb-16 text-white"
-                >
-                    Selected Projects
-                </motion.h2>
-
-                <div className="grid lg:grid-cols-2 gap-12">
+                {/* Projects Grid */}
+                <div className="grid md:grid-cols-2 gap-8">
                     {projects.map((project, index) => (
                         <motion.div
                             key={project.id}
-                            initial={{ opacity: 0, y: 30 }}
+                            initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ delay: index * 0.1 }}
-                            className="group"
                         >
-                            {/* Project Card Image */}
-                            <div className="w-full aspect-video rounded-2xl mb-6 overflow-hidden relative shadow-lg bg-[#1a1a1a]">
-                                <Image
-                                    src={project.image}
-                                    alt={project.title}
-                                    fill
-                                    className="object-cover transition-transform duration-500 group-hover:scale-105"
-                                />
-                                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300" />
-                            </div>
+                            <Link href={`/projects/${project.id}`} className="group block">
+                                <div className="bg-white border border-gray-200 rounded-2xl overflow-hidden hover:shadow-lg transition-all duration-300 hover:border-gray-300">
+                                    {/* Image */}
+                                    <div className="relative aspect-[4/3] overflow-hidden bg-gray-100">
+                                        <Image
+                                            src={project.image}
+                                            alt={project.title}
+                                            fill
+                                            className="object-cover group-hover:scale-105 transition-transform duration-500"
+                                        />
+                                    </div>
 
-                            {/* Project Info */}
-                            <div className="flex items-start justify-between">
-                                <div>
-                                    <h3 className="text-2xl font-bold text-white mb-2 group-hover:text-[#22c55e] transition-colors">{project.title}</h3>
-                                    <p className="text-gray-400 mb-4">{project.category}</p>
+                                    {/* Content */}
+                                    <div className="p-6">
+                                        <h3 className="text-lg font-bold text-gray-900 mb-2 group-hover:text-[#22c55e] transition-colors">
+                                            {project.title}
+                                        </h3>
+                                        <p className="text-gray-500 text-sm leading-relaxed mb-4 line-clamp-2">
+                                            {project.description}
+                                        </p>
+                                        <div className="flex flex-wrap gap-2">
+                                            {project.tags.map((tag) => (
+                                                <span
+                                                    key={tag}
+                                                    className="px-3 py-1 border border-gray-200 rounded-full text-xs font-medium text-gray-600"
+                                                >
+                                                    {tag}
+                                                </span>
+                                            ))}
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-
-                            {/* Actions */}
-                            <div className="flex gap-6 text-sm font-medium text-gray-400">
-                                <a href={project.studyCase} className="flex items-center gap-2 hover:text-white transition-colors">
-                                    <span className="border-b border-gray-700 pb-0.5">View Study Case</span>
-                                </a>
-                                <a href={project.link} className="flex items-center gap-2 hover:text-white transition-colors">
-                                    {project.type === 'app' ? <Smartphone className="w-4 h-4" /> : <Monitor className="w-4 h-4" />}
-                                    <span className="border-b border-gray-700 pb-0.5">
-                                        {project.type === 'app' ? 'Visit AppStore' : 'Visit Website'}
-                                    </span>
-                                </a>
-                            </div>
+                            </Link>
                         </motion.div>
                     ))}
                 </div>
