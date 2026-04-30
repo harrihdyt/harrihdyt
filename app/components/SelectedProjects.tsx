@@ -83,7 +83,7 @@ const SelectedProjects = () => {
                             <Link href={`/projects/${project.id}`} className="group block">
                                 <div className="bg-white border border-gray-200 rounded-2xl overflow-hidden hover:shadow-lg transition-all duration-300 hover:border-gray-300">
                                     {/* Image */}
-                                    <div className="relative aspect-[4/3] overflow-hidden bg-gray-100">
+                                    <div className="relative aspect overflow-hidden bg-gray-100">
                                         <Image
                                             src={project.image}
                                             alt={project.title}
