@@ -6,7 +6,7 @@ import { motion } from 'framer-motion';
 const skills = [
     "Flutter",
     "Dart",
-    "State Management (BLoC, Provider)",
+    "State Management (GetX, BLoC, Provider)",
     "RESTful APIs",
     "Firebase Integration",
     "Git / Version Control",
@@ -19,6 +19,8 @@ const skills = [
     "PHP",
     "Mysql",
     "Figma",
+    "CI/CD",
+    "Testing",
 ];
 
 const CoreExpertise = () => {

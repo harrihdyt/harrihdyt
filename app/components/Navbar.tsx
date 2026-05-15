@@ -58,7 +58,7 @@ const Navbar = () => {
                     <Link href="/" className="flex items-center gap-2.5 group z-10">
                         <div className="w-8 h-8 rounded-full overflow-hidden relative border border-gray-200 group-hover:border-[#22c55e] transition-colors">
                             <Image
-                                src="/profile.png"
+                                src="/icon.png"
                                 alt="Harri Hidayat"
                                 fill
                                 className="object-cover"
