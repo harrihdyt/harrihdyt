@@ -7,12 +7,13 @@ import Image from 'next/image';
 
 const ProjectCta = () => {
     return (
-        <section className="py-16 px-6 lg:px-8 bg-gray-50">
+        <section className="relative py-24 px-6 lg:px-8 overflow-visible">
+            {/* <section className="py-16 px-6 lg:px-8 bg-gray-50"> */}
             <div className="max-w-6xl mx-auto">
-                <div className="bg-white border border-gray-200 rounded-2xl p-10 lg:p-16 flex flex-col lg:flex-row items-center justify-between gap-10">
+                <div className="bg-white/0 backdrop-blur-xl border border-gray-200 rounded-2xl p-10 lg:p-16 flex flex-col lg:flex-row items-center justify-between gap-10">
 
                     {/* Left Content */}
-                    <div className="max-w-xl space-y-4 text-center lg:text-left">
+                    <div className=" max-w-xl space-y-4 text-center lg:text-left">
                         <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 leading-tight">
                             Interested working with me?
                         </h2>

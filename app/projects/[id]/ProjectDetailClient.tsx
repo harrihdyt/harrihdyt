@@ -10,7 +10,7 @@ import ContactSection from '../../components/ContactSection';
 
 function ProjectNotFound() {
     return (
-        <main className="min-h-screen bg-white flex items-center justify-center">
+        <main className="min-h-screen flex items-center justify-center">
             <div className="text-center space-y-6">
                 <div className="w-24 h-24 mx-auto rounded-full bg-gray-100 flex items-center justify-center">
                     <Layers className="w-10 h-10 text-gray-400" />
@@ -19,7 +19,7 @@ function ProjectNotFound() {
                 <p className="text-gray-500">The project you&apos;re looking for doesn&apos;t exist.</p>
                 <Link
                     href="/projects"
-                    className="inline-flex items-center gap-2 px-6 py-3 bg-[#22c55e] text-white font-semibold rounded-lg hover:bg-[#16a34a] transition-colors"
+                    className="inline-flex items-center gap-2 px-6 py-3 bg-[#00E5FF] text-zinc-900 font-semibold rounded-lg hover:bg-[#00D4EC] transition-colors"
                 >
                     <ArrowLeft className="w-4 h-4" />
                     Back to Projects
@@ -49,7 +49,7 @@ export default function ProjectDetailClient({ id }: { id: number }) {
     const nextProject = currentIndex < allProjects.length - 1 ? allProjects[currentIndex + 1] : null;
 
     return (
-        <main className="min-h-screen bg-white">
+        <main className="min-h-screen">
             {/* Hero Section */}
             <section ref={heroRef} className="relative h-[60vh] lg:h-[70vh] overflow-hidden">
                 <motion.div
@@ -94,7 +94,7 @@ export default function ProjectDetailClient({ id }: { id: number }) {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.3 }}
                     >
-                        <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-[#22c55e]/10 border border-[#22c55e]/20 rounded-full text-[#22c55e] text-xs font-medium mb-3">
+                        <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-[#00E5FF]/10 border border-[#00E5FF]/20 rounded-full text-[#00D4EC] text-xs font-medium mb-3">
                             <Smartphone className="w-3 h-3" />
                             {project.category}
                         </span>
@@ -239,7 +239,7 @@ export default function ProjectDetailClient({ id }: { id: number }) {
                                 {project.techStack.map((tech, index) => (
                                     <span
                                         key={index}
-                                        className="px-3 py-1.5 bg-[#22c55e]/5 border border-[#22c55e]/20 rounded-full text-[#22c55e] text-xs font-medium"
+                                        className="px-3 py-1.5 bg-[#00E5FF]/5 border border-[#00E5FF]/20 rounded-full text-[#00D4EC] text-xs font-medium"
                                     >
                                         {tech}
                                     </span>

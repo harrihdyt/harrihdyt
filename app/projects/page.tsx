@@ -17,9 +17,9 @@ const ProjectCard = ({ project }: { project: any }) => {
             viewport={{ once: true }}
         >
             <Link href={`/projects/${project.id}`} className="group block">
-                <div className="bg-white border border-gray-200 rounded-2xl overflow-hidden hover:shadow-lg transition-all duration-300 hover:border-gray-300">
+                <div className="bg-white/0 backdrop-blur-xl border border-white/60 rounded-2xl overflow-hidden hover:shadow-[0_16px_48px_rgba(180,140,220,0.20)] hover:bg-white/20 transition-all duration-300 shadow-[0_8px_32px_rgba(180,140,220,0.10)]">
                     {/* Image */}
-                    <div className="relative aspect-[4/3] overflow-hidden bg-gray-100">
+                    <div className="relative aspect-[4/3]  overflow-hidden bg-white/0 backdrop-blur-xl">
                         <Image
                             src={project.image}
                             alt={project.title}
@@ -67,7 +67,7 @@ export default function ProjectsPage() {
     ];
 
     return (
-        <main className="min-h-screen bg-white pt-24">
+        <main className="min-h-screen pt-24">
             {/* Header */}
             <section className="max-w-6xl mx-auto px-6 lg:px-8 mb-12">
                 <motion.div

@@ -13,8 +13,8 @@ export const metadata: Metadata = {
   title: "Harri Hidayat - Software Engineer",
   description: "Portfolio of Harri Hidayat, a Mobile Engineer specializing in Flutter, iOS, and Android.",
   icons: {
-    icon: '/icon.png',
-    apple: '/icon.png',
+    icon: '/profile.jpg',
+    apple: '/profile.jpg',
   },
 };
 

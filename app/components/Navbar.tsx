@@ -3,8 +3,8 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
-import Image from 'next/image';
 import { usePathname } from 'next/navigation';
+import Image from 'next/image';
 
 const navLinks = [
     { name: 'Home', href: '/' },
@@ -50,21 +50,24 @@ const Navbar = () => {
     return (
         <>
             <nav
-                className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-white/90 backdrop-blur-md shadow-sm border-b border-gray-100' : 'bg-white'
+                className={`fixed top-2 left-20 right-20 z-50 rounded-full transition-all duration-500 ${isScrolled
+                    ? 'bg-white/65 backdrop-blur-xl border-b border-white/50 shadow-[0_2px_20px_rgba(180,140,220,0.10)]'
+                    : 'bg-white/20 backdrop-blur-md border-b border-white/25'
                     }`}
             >
                 <div className="max-w-6xl mx-auto px-6 lg:px-8 h-16 flex items-center justify-between">
                     {/* Logo */}
-                    <Link href="/" className="flex items-center gap-2.5 group z-10">
+                    <Link href="/" className="flex items-center gap-2 group z-10">
                         <div className="w-8 h-8 rounded-full overflow-hidden relative border border-gray-200 group-hover:border-[#22c55e] transition-colors">
                             <Image
-                                src="/icon.png"
+
+                                src="/profile.jpg"
                                 alt="Harri Hidayat"
                                 fill
                                 className="object-cover"
                             />
                         </div>
-                        <span className="text-base font-bold text-gray-900 tracking-tight">HARRI HIDAYAT</span>
+                        <span className="text-xl font-extrabold text-zinc-900 tracking-tight">HARRI HIDAYAT</span>
                     </Link>
 
                     {/* Desktop Center Links */}
@@ -73,9 +76,9 @@ const Navbar = () => {
                             <Link
                                 key={link.name}
                                 href={link.href}
-                                className={`px-4 py-2 text-sm font-medium transition-colors rounded-lg ${isActive(link.href)
-                                    ? 'text-gray-900 underline underline-offset-4 decoration-2 decoration-[#22c55e]'
-                                    : 'text-gray-500 hover:text-gray-900'
+                                className={`px-4 py-1 text-sm font-medium transition-all ${isActive(link.href)
+                                    ? 'text-zinc-900 border-b-2 border-[#BF40BF]'
+                                    : 'text-zinc-500 hover:text-zinc-900'
                                     }`}
                             >
                                 {link.name}
@@ -87,10 +90,7 @@ const Navbar = () => {
                     <div className="hidden md:block">
                         <Link
                             href="/resume"
-                            className={`px-5 py-2 text-sm font-semibold rounded-lg transition-all ${isActive('/resume')
-                                ? 'bg-[#16a34a] text-white shadow-md'
-                                : 'bg-[#22c55e] text-white hover:bg-[#16a34a] shadow-sm hover:shadow-md'
-                                }`}
+                            className="px-5 py-2 text-sm font-semibold rounded-lg bg-[#BF40BF] text-zinc-100 hover:bg-[#CF9FFF] transition-all shadow-xs hover:shadow-md cursor-pointer"
                         >
                             Resume
                         </Link>
@@ -145,7 +145,7 @@ const Navbar = () => {
                                     <Link
                                         href={link.href}
                                         onClick={() => setIsMobileMenuOpen(false)}
-                                        className={`text-2xl font-bold py-3 px-6 block transition-colors ${isActive(link.href) ? 'text-[#22c55e]' : 'text-gray-900 hover:text-[#22c55e]'
+                                        className={`text-2xl font-bold py-3 px-6 block transition-colors ${isActive(link.href) ? 'text-[#BF40BF]' : 'text-gray-900 hover:text-[#BF40BF]'
                                             }`}
                                     >
                                         {link.name}
@@ -162,7 +162,7 @@ const Navbar = () => {
                                 <Link
                                     href="/resume"
                                     onClick={() => setIsMobileMenuOpen(false)}
-                                    className="px-8 py-3 bg-[#22c55e] text-white font-semibold rounded-lg text-lg hover:bg-[#16a34a] transition-colors"
+                                    className="px-8 py-3 bg-[#BF40BF] text-zinc-900 font-semibold rounded-lg text-lg hover:bg-[#CF9FFF] transition-colors"
                                 >
                                     Resume
                                 </Link>
@@ -174,7 +174,7 @@ const Navbar = () => {
                                 transition={{ delay: 0.5 }}
                                 className="mt-8 flex items-center gap-2"
                             >
-                                <div className="w-2 h-2 rounded-full bg-[#22c55e] animate-pulse" />
+                                <div className="w-2 h-2 rounded-full bg-[#BF40BF] animate-pulse" />
                                 <span className="text-gray-400 text-sm">Available for work</span>
                             </motion.div>
                         </div>
