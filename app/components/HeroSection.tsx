@@ -191,7 +191,7 @@ const HeroSection = () => {
         animate={{ rotate: -360 }}
         transition={{
             repeat: Infinity,
-            duration: 10,
+            duration: 12,
             ease: "linear",
         }}
     >
@@ -205,7 +205,7 @@ const HeroSection = () => {
         ease: "linear",
     }}
 >
-    <div className="absolute inset-0 rounded-xl border border-dashed border-cyan-300" />
+    <div className="absolute w-100 h-100 inset-0 rounded-full border border-dashed border-cyan-300" />
 </motion.div>
 
 <motion.div
@@ -217,7 +217,7 @@ const HeroSection = () => {
         ease: "linear",
     }}
 >
-    <div className="absolute inset-0 rounded-xl border border-dashed border-yellow-300" />
+    <div className="absolute w-100 h-100 inset-0 rounded-full border border-dashed border-orange-300" />
 </motion.div>
 
         <Rocket
